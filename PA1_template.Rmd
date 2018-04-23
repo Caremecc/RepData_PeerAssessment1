@@ -5,7 +5,6 @@ output:
     keep_md: true
 ---
 
-
 ## Loading and preprocessing the data
 ```{r setup, echo = TRUE}
 setwd("~/DataScience/R_Research/RepData_PeerAssessment1")
