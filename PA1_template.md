@@ -9,7 +9,9 @@ output:
 ## Loading and preprocessing the data
 
 ```r
-Activity_Data <- read.csv("C:/Users/Caremecc/Documents/DataScience/R_Research/activity.csv", header = TRUE)
+setwd("~/DataScience/R_Research/RepData_PeerAssessment1")
+unzip("activity.zip", exdir = getwd())
+Activity_Data <- read.csv("C:/Users/Caremecc/Documents/DataScience/R_Research/RepData_PeerAssessment1/activity.csv", header = TRUE)
 ```
 
 
@@ -34,7 +36,7 @@ tSteps <- aggregate(steps ~ date, data = Activity_Data, FUN = sum, na.rm = TRUE)
 hist(tSteps$step, xlab = "Number of Steps", main = "Number of Steps taken per day", col = "green")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](PA1_template_files/figure-html/Histogram 1-1.png)<!-- -->
 
 ###3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -73,7 +75,7 @@ ggplot(data = five_min_interval, aes(x = interval, y = steps)) +
   ylab("Average number of steps taken")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](PA1_template_files/figure-html/Average daily activity PLOT-1.png)<!-- -->
 
 
 ```r
@@ -123,7 +125,7 @@ New_tSteps <- aggregate(steps ~ date, data = imputted_act_Data, FUN = sum, na.rm
 hist(New_tSteps$steps, xlab = "Number of Steps", main = "Number of Steps taken per day", col = "green")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](PA1_template_files/figure-html/Histogram 2 (Imputations added)-1.png)<!-- -->
 
 ### The values does look different in comparison to the estimates derived from the first set of data without the imputation.See results below.
 
@@ -180,4 +182,4 @@ ggplot(wday_end_mean, aes(interval, steps)) +
   ylab("Average number of steps taken")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](PA1_template_files/figure-html/Panel Plot-1.png)<!-- -->
