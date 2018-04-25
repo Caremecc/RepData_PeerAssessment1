@@ -1,9 +1,11 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
+title: 'Reproducible Research: Peer Assessment 1'
+output:
   html_document:
-    keep_md: true
+    keep_md: yes
+  pdf_document: default
 ---
+
 
 ## Loading and preprocessing the data
 
@@ -35,7 +37,7 @@ tSteps <- aggregate(steps ~ date, data = Activity_Data, FUN = sum, na.rm = TRUE)
 hist(tSteps$step, xlab = "Number of Steps", main = "Number of Steps taken per day", col = "green")
 ```
 
-![](PA1_template_files/figure-html/Number of Steps taken per day-1.png)<!-- -->
+![](PA1_template_files/figure-html/Plot_1-1.png)<!-- -->
 
 ###3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -74,7 +76,7 @@ ggplot(data = five_min_interval, aes(x = interval, y = steps)) +
   ylab("Average number of steps taken")
 ```
 
-![](PA1_template_files/figure-html/Average daily activity pattern-1.png)<!-- -->
+![](PA1_template_files/figure-html/Plot_2-1.png)<!-- -->
 
 
 ```r
@@ -124,7 +126,7 @@ New_tSteps <- aggregate(steps ~ date, data = imputted_act_Data, FUN = sum, na.rm
 hist(New_tSteps$steps, xlab = "Number of Steps", main = "Number of Steps taken per day", col = "green")
 ```
 
-![](PA1_template_files/figure-html/Number of Step taken per day (imputation)-1.png)<!-- -->
+![](PA1_template_files/figure-html/Plot_3-1.png)<!-- -->
 
 ### The values does look different in comparison to the estimates derived from the first set of data without the imputation.See results below.
 
@@ -181,4 +183,4 @@ ggplot(wday_end_mean, aes(interval, steps)) +
   ylab("Average number of steps taken")
 ```
 
-![](PA1_template_files/figure-html/Panel Plot-1.png)<!-- -->
+![](PA1_template_files/figure-html/Panel_Plot-1.png)<!-- -->
