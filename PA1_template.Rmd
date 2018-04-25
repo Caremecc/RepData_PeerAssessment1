@@ -20,7 +20,7 @@ tSteps <- sum(Activity_Data$steps, na.rm = TRUE)
 tSteps
 ```
 ###2. Histogram of the total number of steps taken each day.
-```{r, echo = TRUE}
+```{r Number of Steps taken per day, fig.height=6, echo = TRUE}
 ##calculating and storing the total number of steps in to the variable "tSteps"
 tSteps <- aggregate(steps ~ date, data = Activity_Data, FUN = sum, na.rm = TRUE)
 
@@ -42,7 +42,7 @@ tSteps_median
 
 ## What is the average daily activity pattern?
 ###1. Time series plot (i.e. type = "1") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
-```{r, echo = TRUE}
+```{r Average daily activity pattern, fig.height=6, echo = TRUE}
 library(ggplot2)
 five_min_interval <- aggregate(steps ~ interval, data = Activity_Data, FUN = mean, na.rm = TRUE)
 ggplot(data = five_min_interval, aes(x = interval, y = steps)) +
@@ -80,7 +80,7 @@ imputted_act_Data <- transform(Activity_Data, steps = ifelse(is.na(Activity_Data
 
 ### 4. Make a histogram of the total number of steps taken each day and calculate and report the mean and median total number of steps taken per day.
 
-```{r, echo = TRUE}
+```{r Number of Step taken per day (imputation), fig.height=6, echo = TRUE}
 New_tSteps <- aggregate(steps ~ date, data = imputted_act_Data, FUN = sum, na.rm = TRUE)
 
 #Histogram
@@ -119,7 +119,7 @@ imputted_act_Data$day <- sapply(imputted_act_Data$date, FUN = wday_end)
 ###2. Make a panel plot containing a time series plot of the 5 minute interval and the average number of steps taken, averaged across all weekday days and weekend days.
 
 ### Panel Plot
-```{r, echo=TRUE}
+```{r Panel Plot, fig.height=6, echo=TRUE}
 wday_end_mean <- aggregate(steps ~ interval + day, data = imputted_act_Data, mean)
 ggplot(wday_end_mean, aes(interval, steps)) + 
   geom_line() + 
